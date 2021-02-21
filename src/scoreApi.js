@@ -1,9 +1,17 @@
 class ScoreApi {
   static updateDatabase(scoreToAdd, scoreToRemove) {
+    if (scoreToAdd.initials.length > 3) {
+      scoreToAdd.initials = "ZZZ";
+    } else if (scoreToAdd.initials.length < 3) {
+      while (scoreToAdd.initials.length < 3) {
+        scoreToAdd.initials += "Z";
+      }
+    }
     ScoreApi.removeScoreFromDatabase(scoreToRemove);
     setTimeout(() => {
       ScoreApi.addNewScoreToDatabase(scoreToAdd);
     }, 200);
+    alert("Your score has been saved!");
   }
 
   static addNewScoreToDatabase(scoreToAdd) {

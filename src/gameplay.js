@@ -264,7 +264,6 @@ class Gameplay {
       difficulty_id: difficultyLevel.id,
     };
     ScoreApi.updateDatabase(scoreToAdd, scoreToRemove);
-    alert("Your score has been saved!");
   }
 
   displaySuccess() {
