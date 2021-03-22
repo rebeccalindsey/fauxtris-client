@@ -78,3 +78,9 @@ Pull Requests are welcome on [GitHub](https://github.com/rebeccahickson/fauxtris
 <a href="https://youtu.be/sCUz-KM0baE
 " target="_blank"><img src="http://img.youtube.com/vi/sCUz-KM0baE/0.jpg" 
 alt="Screenshot of project walkthrough" width="240" height="180" border="10" /></a>
+
+## Further Reading
+
+[Controlling User Input with JavaScript](https://levelup.gitconnected.com/controlling-user-input-with-javascript-98438e8007f6)
+
+A how-to on using JavaScript to improve your user's input experience
