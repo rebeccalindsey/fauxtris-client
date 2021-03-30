@@ -272,13 +272,16 @@ class Gameplay {
       .getElementById("new-high-score")
       .classList.add("show-flex-element");
 
-    document.getElementById("initials").addEventListener("keydown", (event) => {
-      if (event.key.match(/[a-zA-Z]+/g)) {
-        return event;
-      } else {
-        event.preventDefault();
-      }
-    });
+    document
+      .getElementById("initials")
+      .addEventListener("keydown", function (event) {
+        console.log(this);
+        if (event.key.match(/[a-zA-Z]+/g)) {
+          return event;
+        } else {
+          event.preventDefault();
+        }
+      });
   }
 
   displayLoss() {
