@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function handleClick(id) {
   switch (id) {
     case "new-game":
+      resetBoard();
       returnButtonToOriginal();
       selectDifficulty();
       break;
@@ -139,6 +140,15 @@ function preventDuplicateButtons(previousBtnClicked, idOfCurrentBtn) {
   } else if (idOfCurrentBtn === "leaderboard") {
     previousBtnClicked.id = "how-to-play";
     previousBtnClicked.innerHTML = "How To Play";
+  }
+}
+
+function resetBoard() {
+  const shouldResetBoard = document.getElementById("new-high-score").classList.contains("show-flex-element");
+
+  if (shouldResetBoard) {
+    document.getElementById("new-high-score").classList.add("hide-element");
+    document.getElementById("new-high-score").classList.remove("show-flex-element");
   }
 }
 

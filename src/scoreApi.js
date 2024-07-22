@@ -1,17 +1,15 @@
 class ScoreApi {
-  static updateDatabase(scoreToAdd, scoreToRemove) {
+  static updateLeaderboard(scoreToAdd) {
     if (scoreToAdd.initials.length > 3) {
-      scoreToAdd.initials = "ZZZ";
+      scoreToAdd.initials = scoreToAdd.initials.substring(0, 3);
     } else if (scoreToAdd.initials.length < 3) {
-      while (scoreToAdd.initials.length < 3) {
-        scoreToAdd.initials += "Z";
-      }
+      scoreToAdd.initials = scoreToAdd.initials.padEnd(3, "Z");
     }
-    ScoreApi.removeScoreFromDatabase(scoreToRemove);
-    setTimeout(() => {
-      ScoreApi.addNewScoreToDatabase(scoreToAdd);
-    }, 200);
-    alert("Your score has been saved!");
+
+    ScoreApi.addNewScoreToDatabase(scoreToAdd)
+    .then(() => DifficultyApi.fetchLeaderboard())
+    .then(() => alert("Your score has been saved!")
+    )
   }
 
   static addNewScoreToDatabase(scoreToAdd) {
@@ -24,20 +22,9 @@ class ScoreApi {
       body: JSON.stringify(scoreToAdd),
     };
 
-    fetch("http://127.0.0.1:3000/score", configObj)
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  }
-
-  static removeScoreFromDatabase(scoreToRemove) {
-    const configObj = {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    };
-
-    fetch(`http://127.0.0.1:3000/score/${scoreToRemove.id}`, configObj);
+    return fetch("http://localhost:4000/api/score", configObj)
+      .then((response) => {
+        return response.json();
+      })
   }
 }

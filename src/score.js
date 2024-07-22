@@ -1,8 +1,8 @@
 class Score {
-  constructor(points, initials, id, difficulty_id) {
+  constructor(points, initials, id, difficultyId) {
     this.points = points;
     this.initials = initials;
     this.id = id;
-    this.difficulty_id = difficulty_id;
+    this.difficultyId = difficultyId;
   }
 }

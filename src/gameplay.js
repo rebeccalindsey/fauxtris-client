@@ -257,14 +257,14 @@ class Gameplay {
     const index = difficultyLevel.scores.indexOf(lowerScore);
     const input = `${this.score} - ${initials}`;
     difficultyLevel.scores.splice(index, 0, input);
-    const scoreToRemove = difficultyLevel.scores.pop();
+    difficultyLevel.scores.pop();
     const scoreToAdd = {
       points: this.score,
       initials: initials,
-      difficulty_id: difficultyLevel.id,
+      difficultyId: difficultyLevel.id,
     };
-    ScoreApi.updateDatabase(scoreToAdd, scoreToRemove);
-  }
+    ScoreApi.updateLeaderboard(scoreToAdd);
+  } 
 
   displaySuccess() {
     document.getElementById("new-high-score").classList.remove("hide-element");
@@ -275,7 +275,6 @@ class Gameplay {
     document
       .getElementById("initials")
       .addEventListener("keydown", function (event) {
-        console.log(this);
         if (event.key.match(/[a-zA-Z]+/g)) {
           return event;
         } else {
